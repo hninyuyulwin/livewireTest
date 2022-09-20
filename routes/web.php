@@ -7,6 +7,7 @@ use App\Http\Livewire\User;
 use App\Http\Livewire\Action;
 use App\Http\Livewire\Contact;
 use App\Http\Livewire\Product;
+use App\Http\Livewire\Users;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,3 +32,5 @@ Route::get('form', Form::class);
 Route::get('action', Action::class);
 Route::get('product', Product::class);
 Route::get('contact', Contact::class);
+//for pagination
+Route::get('users', Users::class);
