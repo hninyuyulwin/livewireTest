@@ -15,5 +15,14 @@
   {{ $slot }}
 
   @livewireScripts
+  <script>
+    window.livewire.on('studentAdded', ()=>{
+      $("#studentCreateModal").modal('hide');
+    });
+    
+    window.livewire.on('studentUpdated', ()=>{
+      $("#studentUpdateModal").modal('hide');
+    });
+  </script>
 </body>
 </html>
