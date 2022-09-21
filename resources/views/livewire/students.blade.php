@@ -1,4 +1,9 @@
 <div>
+    <style>
+        nav svg{
+            height: 20px;
+        }
+    </style>
     @include('livewire.students-create')
     @include('livewire.students-update')
     <section style="padding-top: 50px">
@@ -15,7 +20,10 @@
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#studentCreateModal">
                                 Create New Student
                             </button>
-  
+                            
+                            <div class="col-md-4 float-right">
+                                <input type="search" class="form-control" placeholder="Search..." wire:model="searchTerm">
+                            </div>
                         </div>
                         <div class="card-body">
                             <table class="table table-striped">
@@ -45,6 +53,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{ $students->links() }}
                         </div>
                     </div>
                 </div>

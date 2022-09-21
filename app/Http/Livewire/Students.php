@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Student;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Students extends Component
 {
@@ -12,6 +13,7 @@ class Students extends Component
     public $email;
     public $phone;
     public $ids;
+    public $searchTerm;
 
     public function resetInputField()
     {
@@ -76,9 +78,16 @@ class Students extends Component
         }
     }
 
+    use WithPagination;
     public function render()
     {
-        $students = Student::orderBy('id', 'desc')->get();
+        $search = '%' . $this->searchTerm . '%';
+        $students = Student::where('firstname', 'LIKE', $search)
+            ->orWhere('lastname', 'LIKE', $search)
+            ->orWhere('email', 'LIKE', $search)
+            ->orWhere('phone', 'LIKE', $search)
+            ->orderBy('id', 'desc')
+            ->paginate(5);
         return view('livewire.students', ['students' => $students]);
     }
 }
